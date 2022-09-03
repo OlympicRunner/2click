@@ -1,0 +1,26 @@
+@font-face {
+    font-family: "Gilroy";
+    src: local("Gilroy-UltraLight"), url("../fonts/Gilroy-UltraLight.woff2") format("woff2");
+    src: local("Gilroy-UltraLight"), url("../fonts/Gilroy-UltraLight.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: "Gilroy", sans-serif;
+    font-weight: 600;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 150px;
+}
+
+.game-box {
+    display: grid;
+    width: 500px;
+    height: 500px;
+    /* grid-template: repeat(4, 1fr) / repeat(4, 1fr); */
+    border: 1px solid red;
+}
