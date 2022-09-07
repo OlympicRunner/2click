@@ -144,10 +144,13 @@
                         
                         classItems.splice(classItems.indexOf(selectAvtive.classList[0]), 1)
                         classItems.splice(classItems.indexOf(select.classList[0]), 1)
-                        
-                        dataItems.splice(dataItems.indexOf(select.classList[2]), 1)
-                        dataItems.splice(classItems.indexOf(select.classList[2]), 1)
-                        
+                        for (let item of dataItems) {
+                            if (item[0] == select.classList[2]) {
+                                /// ищем в dataItems и удаляем 
+                                dataItems.splice(dataItems.indexOf(item), 1)
+                            }
+                        }
+                        /// найти елемент который имет строку select.classList[2]) и удалть
 
                         
                     } else { /// если не угалади 2-й елемент
