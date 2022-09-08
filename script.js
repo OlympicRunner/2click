@@ -71,7 +71,7 @@
         /// создаем елементы по грид сетке
         function addGridElem () {
             function createElem (i) {
-                let oneElem = document.createElement('div')
+                let oneElem = document.createElement('button')
                 let classs = 'elem-' + i
                 oneElem.classList.add(classs)
                 oneElem.classList.add('elem')
@@ -140,10 +140,15 @@
                         select.classList.add('static')
                         selectAvtive.classList.add('static')
                         selectAvtive.classList.remove('active')
+                        selectAvtive.setAttribute('disabled', 'true')
+                        select.setAttribute('disabled', 'true')
+                       
                         /// удалить из списка classItems
                         
                         classItems.splice(classItems.indexOf(selectAvtive.classList[0]), 1)
                         classItems.splice(classItems.indexOf(select.classList[0]), 1)
+                        
+                        
                         for (let item of dataItems) {
                             if (item[0] == select.classList[2]) {
                                 /// ищем в dataItems и удаляем 
