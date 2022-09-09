@@ -7,30 +7,67 @@
 
     function create2ClickSpace () {
         let container = document.querySelector('.container')
-        let create2ClickTitle = document.createElement('h1')
+        // let create2ClickTitle = document.createElement('h1')
         let createGameBox = document.createElement('div')
         let createInput = document.createElement('input')
         let button = document.createElement('button')
-        
+        let createSettBox = document.createElement('div')
+        let createTimer = document.createElement('div')
+        let settBoxUp = document.createElement('div')
+        let inputBox = document.createElement('div')
+        let btnContent = document.createElement('div')
+        let timerInfo = document.createElement('div')
 
-        create2ClickTitle.innerHTML = 'Text'
+        let psevdoGameBox = document.createElement('div')
+        let psevdoTimer = document.createElement('div')
+        let psevdoInput = document.createElement('div')
+        let psevdoButton = document.createElement('div')
+        
+        
+        // create2ClickTitle.innerHTML = 'Text'
         createGameBox.classList.add('game-box')
         createInput.value = '4'
         createInput.type = 'number'
+        createInput.classList.add('input')
         createInput.min = '2'
         createInput.max = '10'
         createGameBox.maxLength = '2'
         createInput.maxLength = '2'
         createInput.classList.add('input')
-        button.textContent = 'Start'
+
         button.classList.add('btn')
         button.classList.add('btn-start')
+        createSettBox.classList.add('sett-box')
+        createTimer.classList.add('timer')
+        settBoxUp.classList.add('settbox-up')
+        inputBox.classList.add('input-box')
+        btnContent.classList.add('btn-content')
+        btnContent.textContent = 'Start'
+        timerInfo.classList.add('timer-info')
 
-
-        container.append(create2ClickTitle)
-        container.append(createInput)
-        container.append(button)
         container.append(createGameBox)
+        container.append(createSettBox)
+        createSettBox.append(settBoxUp)
+        settBoxUp.append(createTimer)
+        createTimer.append(timerInfo)
+        settBoxUp.append(inputBox)
+        inputBox.append(createInput)
+        createSettBox.append(button)
+        button.append(btnContent)
+        /// оформление
+        container.append(psevdoTimer)
+        psevdoTimer.classList.add('psevdo-timer')
+        container.append(psevdoInput)
+        psevdoInput.classList.add('psevdo-input')
+        container.append(psevdoButton)
+        psevdoButton.classList.add('psevdo-btn')
+        container.append(psevdoGameBox)
+        psevdoGameBox.classList.add('psevdo-box')
+
+        // createSettBox.append(create2ClickTitle)
+        
+        
+        
         //// создали структуру
 
 
@@ -97,10 +134,15 @@
             for (i = 0; i < perOneDate; i++) {
             
                 let newClass = 'image-data-' + i
-                let iObj = [newClass]
+                let iObj = newClass
                 dataItems.push(iObj)   
             } 
         }
+
+        function timerPlaying () {
+            timerInfo.textContent = '00:00'
+        }
+        timerPlaying ()
 
     }
 
@@ -117,6 +159,8 @@
             elem.classList.add(dataItems[i])
         }
     }
+
+
 
     /// клик по элементу
     
@@ -148,13 +192,15 @@
                         classItems.splice(classItems.indexOf(selectAvtive.classList[0]), 1)
                         classItems.splice(classItems.indexOf(select.classList[0]), 1)
                         
+                        dataItems = []
+                        let selectGameBox = document.querySelectorAll('.elem')
                         
-                        for (let item of dataItems) {
-                            if (item[0] == select.classList[2]) {
-                                /// ищем в dataItems и удаляем 
-                                dataItems.splice(dataItems.indexOf(item), 1)
+                        for (let item of selectGameBox) {
+                            if (!(item.classList.contains('static'))) {
+                                dataItems.push(item.classList[2])
                             }
                         }
+                        
                         /// найти елемент который имет строку select.classList[2]) и удалть
 
                         
@@ -165,13 +211,14 @@
                             let clssss = '.' + item
                             let selecttt = document.querySelector(clssss)
                             selecttt.classList.remove(selecttt.classList[2])
-                            
+                            selecttt.removeAttribute('disabled')
                         }
                         shuffle(dataItems)
                         crossingClass ()
                     }
                 } else {
                     select.classList.add('active')
+                    select.setAttribute('disabled', 'true')
                 }
             })
             
