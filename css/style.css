@@ -101,6 +101,7 @@ body {
 
 
 .timer {
+    position: relative;
     width: 150px;
     height: 50px;
     margin-bottom: 20px;
@@ -110,6 +111,10 @@ body {
 }
 
 .timer-info {
+    position: absolute;
+    content: '';
+    top: 8px;
+    left: 14px;
     width: 97px;
     height: 30px;
     padding-top: 4px;
@@ -144,6 +149,7 @@ body {
     width: 150px;
     height: 50px;
     background-color: #fafafa;
+    border: none;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -488,4 +494,8 @@ body {
 
 .static {
     background-image: none;
+}
+
+.fail {
+    background-color: rgba(5, 3, 3, 0.5);
 }

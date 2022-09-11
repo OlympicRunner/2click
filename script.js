@@ -17,6 +17,7 @@
         let inputBox = document.createElement('div')
         let btnContent = document.createElement('div')
         let timerInfo = document.createElement('div')
+        let timerSpan = document.createElement('span')
 
         let psevdoGameBox = document.createElement('div')
         let psevdoTimer = document.createElement('div')
@@ -44,6 +45,7 @@
         btnContent.classList.add('btn-content')
         btnContent.textContent = 'Start'
         timerInfo.classList.add('timer-info')
+        timerSpan.setAttribute('id', 'timer')
 
         container.append(createGameBox)
         container.append(createSettBox)
@@ -54,6 +56,7 @@
         inputBox.append(createInput)
         createSettBox.append(button)
         button.append(btnContent)
+        timerInfo.append(timerSpan)
         /// оформление
         container.append(psevdoTimer)
         psevdoTimer.classList.add('psevdo-timer')
@@ -66,7 +69,7 @@
 
         // createSettBox.append(create2ClickTitle)
         
-        
+        timerSpan.textContent = '00:00'
         
         //// создали структуру
 
@@ -95,6 +98,8 @@
                 shuffle(dataItems)
                 crossingClass ()
                 elementClick ()
+                stopInterval ()
+                onload()
             }) 
         }
         settInput() /// по клику проверка данных и построение сетки
@@ -139,10 +144,43 @@
             } 
         }
 
-        function timerPlaying () {
-            timerInfo.textContent = '00:00'
+        let startInterval
+
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            startInterval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+        
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+        
+                display.textContent = minutes + ":" + seconds;
+        
+                if (--timer < 0) {
+                    timer = duration;
+                    clearInterval(startInterval)
+                    for (let item of classItems) {
+                        let getClass = '.' + item
+                        let getElem = document.querySelector(getClass)
+                        getElem.setAttribute('disabled', 'true')
+                        getElem.classList.add('fail')
+                    }
+                    alert('время вышло!')
+                }
+            }, 1000);
         }
-        timerPlaying ()
+        
+        function onload () {
+            let time = 60 * 1,
+                display = document.querySelector('#timer');
+            startTimer(time, display);
+            
+        };
+
+        function stopInterval () {
+            clearInterval(startInterval)
+        }
 
     }
 
