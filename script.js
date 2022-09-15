@@ -118,6 +118,10 @@
                 oneElem.classList.add(classs)
                 oneElem.classList.add('elem')
                 createGameBox.append(oneElem)
+                let img = document.createElement('img')
+                oneElem.append(img)
+                img.src = 'img/back-card.png'
+                img.classList.add('img-set')
 
                 classItems.push(classs)
             }
@@ -219,11 +223,18 @@
                 if (j > 0) {
                     let selectAvtive = document.querySelector('.active')
                     if (selectAvtive.classList[2] == select.classList[2]) {
+                        selectAvtive.setAttribute('disabled', 'true')
+                        select.setAttribute('disabled', 'true')
                         select.classList.add('static')
                         selectAvtive.classList.add('static')
                         selectAvtive.classList.remove('active')
-                        selectAvtive.setAttribute('disabled', 'true')
-                        select.setAttribute('disabled', 'true')
+                        select.childNodes[0].style.opacity = '0'
+                        selectAvtive.childNodes[0].style.opacity = '0'
+                        
+
+                        /// открыть карточку
+
+                        // select.childNodes[0].classList.add('img-active')
                        
                         /// удалить из списка classItems
                         
@@ -243,20 +254,33 @@
 
                         
                     } else { /// если не угалади 2-й елемент
+                        select.setAttribute('disabled', 'true')
+                        select.childNodes[0].style.opacity = '0'
+
+                        let int = setTimeout(() => {
+                            select.childNodes[0].style.opacity = '1'
+                            selectAvtive.childNodes[0].style.opacity = '1'
+                        }, 300)
                         selectAvtive.classList.remove('active')
+
                         
-                        for (let item of classItems) {
-                            let clssss = '.' + item
-                            let selecttt = document.querySelector(clssss)
-                            selecttt.classList.remove(selecttt.classList[2])
-                            selecttt.removeAttribute('disabled')
-                        }
-                        shuffle(dataItems)
-                        crossingClass ()
+
+                        setTimeout(() => {
+                            for (let item of classItems) {
+                                let clssss = '.' + item
+                                let selecttt = document.querySelector(clssss)
+                                selecttt.classList.remove(selecttt.classList[2])
+                                selecttt.removeAttribute('disabled')
+                            }
+                            shuffle(dataItems)
+                            crossingClass ()
+                        }, 500)
                     }
                 } else {
                     select.classList.add('active')
                     select.setAttribute('disabled', 'true')
+                    select.childNodes[0].style.opacity = '0'
+                    
                 }
             })
             
