@@ -74,7 +74,7 @@
         //// создали структуру
 
 
-        function settInput () {
+        function settInput () {/// не очень коректное название функции но это стартовая точка для развития всего процесса
 
             button.addEventListener('click', () => {
                 if (createInput.value > 10 || createInput.value < 2 || (createInput.value % 2) > 0) {
@@ -103,6 +103,8 @@
             }) 
         }
         settInput() /// по клику проверка данных и построение сетки
+
+    
 
 
         function gridInBox () {
@@ -187,6 +189,8 @@
         }
 
     }
+
+
 
     function shuffle(array) {   /// данная штуковина микширует массив с данными
         array.sort(() => Math.random() - 0.5);
