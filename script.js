@@ -104,21 +104,14 @@
 
                 let time
 
-                if (createInput.value == 2) {
+
+                if (createInput.value > 2) {
+                    time = 10 * (createInput.value * 1.5)
+                } else {
                     time = 10
                 }
-                if (createInput.value == 4) {
-                    time = 30
-                }
-                if (createInput.value == 6) {
-                    time = 90
-                }
-                if (createInput.value == 8) {
-                    time = 270
-                }
-                if (createInput.value == 10) {
-                    time = 600
-                }
+
+
 
                 onload (time)
             }) 
