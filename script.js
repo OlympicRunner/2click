@@ -3,7 +3,7 @@
     let classItems = [] /// тут храним список классов существующих элементов сетки 
     
     let dataItems = [] /// тут мы будем хранить значения для элементов
-   
+    let startInterval
 
     function create2ClickSpace () {
         let container = document.querySelector('.container')
@@ -148,7 +148,7 @@
             } 
         }
 
-        let startInterval
+        
 
         function startTimer(duration, display) {
             let timer = duration, minutes, seconds;
@@ -210,6 +210,7 @@
         for (let item of classItems) {/// функция двоит в консоль потому-что дата список двойной по этому и срабатывает как х2 
             let cls = '.' + item
             let select = document.querySelector(cls)
+            let selectGameBox = document.querySelectorAll('.elem')
             
             select.addEventListener('click', () => { 
                 let j = 0 /// индекс проверки 
@@ -221,6 +222,7 @@
                     }
                 }
                 if (j > 0) {
+                    
                     let selectAvtive = document.querySelector('.active')
                     if (selectAvtive.classList[2] == select.classList[2]) {
                         selectAvtive.setAttribute('disabled', 'true')
@@ -242,15 +244,28 @@
                         classItems.splice(classItems.indexOf(select.classList[0]), 1)
                         
                         dataItems = []
-                        let selectGameBox = document.querySelectorAll('.elem')
+                        
                         
                         for (let item of selectGameBox) {
                             if (!(item.classList.contains('static'))) {
                                 dataItems.push(item.classList[2])
                             }
                         }
+
+                        let k = 0
+                        for (let item of selectGameBox) {
+                            if (!item.classList.contains('static')) {
+                                k++
+                            }
+                        }
                         
-                        /// найти елемент который имет строку select.classList[2]) и удалть
+                        if (k == 0 ) {
+                            clearInterval(startInterval)
+                            setTimeout (function() {
+                                alert('Удача при вас!!! ')
+                            }, 500)
+                            select.childNodes[0].style.opacity = '0'
+                        }
 
                         
                     } else { /// если не угалади 2-й елемент
@@ -262,8 +277,6 @@
                             selectAvtive.childNodes[0].style.opacity = '1'
                         }, 300)
                         selectAvtive.classList.remove('active')
-
-                        
 
                         setTimeout(() => {
                             for (let item of classItems) {
@@ -282,6 +295,7 @@
                     select.childNodes[0].style.opacity = '0'
                     
                 }
+
             })
             
         }
