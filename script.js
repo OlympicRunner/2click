@@ -99,7 +99,28 @@
                 crossingClass ()
                 elementClick ()
                 stopInterval ()
-                onload()
+
+                /// определяем время игры в зависимости от количества ячеек 
+
+                let time
+
+                if (createInput.value == 2) {
+                    time = 10
+                }
+                if (createInput.value == 4) {
+                    time = 30
+                }
+                if (createInput.value == 6) {
+                    time = 90
+                }
+                if (createInput.value == 8) {
+                    time = 270
+                }
+                if (createInput.value == 10) {
+                    time = 600
+                }
+
+                onload (time)
             }) 
         }
         settInput() /// по клику проверка данных и построение сетки
@@ -177,8 +198,8 @@
             }, 1000);
         }
         
-        function onload () {
-            let time = 60 * 1,
+        function onload (t = 30) {
+            let time = t * 1,
                 display = document.querySelector('#timer');
             startTimer(time, display);
             
