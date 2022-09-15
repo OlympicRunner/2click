@@ -6,23 +6,23 @@
     let startInterval
 
     function create2ClickSpace () {
-        let container = document.querySelector('.container')
-        // let create2ClickTitle = document.createElement('h1')
-        let createGameBox = document.createElement('div')
-        let createInput = document.createElement('input')
-        let button = document.createElement('button')
-        let createSettBox = document.createElement('div')
-        let createTimer = document.createElement('div')
-        let settBoxUp = document.createElement('div')
-        let inputBox = document.createElement('div')
-        let btnContent = document.createElement('div')
-        let timerInfo = document.createElement('div')
-        let timerSpan = document.createElement('span')
+        const container = document.querySelector('.container')
+        // const create2ClickTitle = document.createElement('h1')
+        const createGameBox = document.createElement('div')
+        const createInput = document.createElement('input')
+        const button = document.createElement('button')
+        const createSettBox = document.createElement('div')
+        const createTimer = document.createElement('div')
+        const settBoxUp = document.createElement('div')
+        const inputBox = document.createElement('div')
+        const btnContent = document.createElement('div')
+        const timerInfo = document.createElement('div')
+        const timerSpan = document.createElement('span')
 
-        let psevdoGameBox = document.createElement('div')
-        let psevdoTimer = document.createElement('div')
-        let psevdoInput = document.createElement('div')
-        let psevdoButton = document.createElement('div')
+        const psevdoGameBox = document.createElement('div')
+        const psevdoTimer = document.createElement('div')
+        const psevdoInput = document.createElement('div')
+        const psevdoButton = document.createElement('div')
         
         
         // create2ClickTitle.innerHTML = 'Text'
