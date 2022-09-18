@@ -7,7 +7,7 @@
 
     function create2ClickSpace () {
         const container = document.querySelector('.container')
-        // const create2ClickTitle = document.createElement('h1')
+
         const createGameBox = document.createElement('div')
         const createInput = document.createElement('input')
         const button = document.createElement('button')
@@ -303,7 +303,7 @@
                                 selecttt.classList.remove(selecttt.classList[2])
                                 selecttt.removeAttribute('disabled')
                             }
-                            shuffle(dataItems)
+                            // shuffle(dataItems)
                             crossingClass ()
                         }, 500)
                     }
