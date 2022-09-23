@@ -27,23 +27,7 @@
         const psevdoInput = document.createElement('div')
         const psevdoButton = document.createElement('div')
 
-        // создаем svg для кнопки 
-
-        const svgArrow = document.createElement('svg')
-        const svgPathArrow = document.createElement('path')
-        svgArrow.setAttribute('version', '1.1')
-        svgArrow.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
-        svgArrow.setAttribute('viewBox', '0 0 629.42 595.28')
-
-        svgPathArrow.setAttribute('fill', '#00C3D9')
-        svgPathArrow.setAttribute('d', "M282.97,105.54L42.17,444.66c-18.3,25.77,0.13,61.46,31.74,61.46h481.61c31.61,0,50.04-35.69,31.74-61.46 l-240.8-339.12C330.93,83.69,298.49,83.69,282.97,105.54z")
-     
-
-
-        svgArrow.append(svgPathArrow)
-
-        
-        
+  
         // create2ClickTitle.innerHTML = 'Text'
         createGameBox.classList.add('game-box')
         createInput.value = '4'
@@ -63,6 +47,8 @@
         inputBox.classList.add('input-box')
         inputBtns.classList.add('input-btns')
         inputBtnUp.classList.add('btn-up')
+        inputBtnUp.innerHTML = '<svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 629.42 595.28"><path fill = "#00C3D9"  d="M282.97,105.54L42.17,444.66c-18.3,25.77,0.13,61.46,31.74,61.46h481.61c31.61,0,50.04-35.69,31.74-61.46 l-240.8-339.12C330.93,83.69,298.49,83.69,282.97,105.54z"/></svg>'
+        inputBtnDown.innerHTML = '<svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 629.42 595.28"><path fill = "#00C3D9"  d="M282.97,105.54L42.17,444.66c-18.3,25.77,0.13,61.46,31.74,61.46h481.61c31.61,0,50.04-35.69,31.74-61.46 l-240.8-339.12C330.93,83.69,298.49,83.69,282.97,105.54z"/></svg>'
         inputBtnDown.classList.add('btn-down')
         btnContent.classList.add('btn-content')
         btnContent.textContent = 'Start'
@@ -140,7 +126,21 @@
 
 
                 onload (time)
-            }) 
+            })
+
+            /// кнопки повышения и понижения шага в input
+
+            inputBtnUp.addEventListener('click', () => {
+                if (createInput.value < 9) {
+                    createInput.value = Number(createInput.value) + 2
+                }
+            })
+
+            inputBtnDown.addEventListener('click', () => {
+                if (createInput.value > 3) {
+                    createInput.value = Number(createInput.value) - 2 
+                }
+            })
         }
         settInput() /// по клику проверка данных и построение сетки
 
