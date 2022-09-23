@@ -15,6 +15,9 @@
         const createTimer = document.createElement('div')
         const settBoxUp = document.createElement('div')
         const inputBox = document.createElement('div')
+        const inputBtns = document.createElement('div')
+        const inputBtnUp = document.createElement('button')
+        const inputBtnDown = document.createElement('button')
         const btnContent = document.createElement('div')
         const timerInfo = document.createElement('div')
         const timerSpan = document.createElement('span')
@@ -23,6 +26,22 @@
         const psevdoTimer = document.createElement('div')
         const psevdoInput = document.createElement('div')
         const psevdoButton = document.createElement('div')
+
+        // создаем svg для кнопки 
+
+        const svgArrow = document.createElement('svg')
+        const svgPathArrow = document.createElement('path')
+        svgArrow.setAttribute('version', '1.1')
+        svgArrow.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+        svgArrow.setAttribute('viewBox', '0 0 629.42 595.28')
+
+        svgPathArrow.setAttribute('fill', '#00C3D9')
+        svgPathArrow.setAttribute('d', "M282.97,105.54L42.17,444.66c-18.3,25.77,0.13,61.46,31.74,61.46h481.61c31.61,0,50.04-35.69,31.74-61.46 l-240.8-339.12C330.93,83.69,298.49,83.69,282.97,105.54z")
+     
+
+
+        svgArrow.append(svgPathArrow)
+
         
         
         // create2ClickTitle.innerHTML = 'Text'
@@ -42,6 +61,9 @@
         createTimer.classList.add('timer')
         settBoxUp.classList.add('settbox-up')
         inputBox.classList.add('input-box')
+        inputBtns.classList.add('input-btns')
+        inputBtnUp.classList.add('btn-up')
+        inputBtnDown.classList.add('btn-down')
         btnContent.classList.add('btn-content')
         btnContent.textContent = 'Start'
         timerInfo.classList.add('timer-info')
@@ -54,9 +76,13 @@
         createTimer.append(timerInfo)
         settBoxUp.append(inputBox)
         inputBox.append(createInput)
+        inputBox.append(inputBtns)
+        inputBtns.append(inputBtnUp)
+        inputBtns.append(inputBtnDown)
         createSettBox.append(button)
         button.append(btnContent)
         timerInfo.append(timerSpan)
+
         /// оформление
         container.append(psevdoTimer)
         psevdoTimer.classList.add('psevdo-timer')
